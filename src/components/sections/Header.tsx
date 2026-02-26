@@ -58,7 +58,6 @@ export function Header() {
                 href={link.href}
                 className="text-sm font-medium text-foreground
                  hover:text-[#6366F1]
-                 hover:underline
                  transition-colors duration-200"
               >
                 {link.label}
@@ -117,7 +116,7 @@ export function Header() {
         className={`
     absolute top-full left-0 right-0 lg:hidden
     z-[101]
-    bg-white dark:bg-gray-900 border-b-3 border-[#6366F1] shadow-md
+    bg-white dark:bg-[#121212] border-b-3 border-[#6366F1] shadow-md
     transition-all duration-300 ease-in-out
     overflow-hidden
     ${isMobileMenuOpen
