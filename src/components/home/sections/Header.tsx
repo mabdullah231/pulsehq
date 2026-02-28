@@ -1,6 +1,7 @@
 "use client";
 import { Menu, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export function Header() {
@@ -10,11 +11,9 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // <-- new state
 
   const navLinks = [
-    { label: "Product", href: "#product" },
     { label: "Features", href: "#features" },
     { label: "Pricing", href: "#pricing" },
-    { label: "About", href: "#about" },
-    { label: "Blog", href: "#blog" },
+    { label: "Reviews", href: "#review" },
   ];
 
   useEffect(() => {
@@ -84,20 +83,20 @@ export function Header() {
               )}
             </button>
 
-            <button
+            <Link
               className="hidden md:inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium
   text-foreground
   hover:bg-primary hover:text-[#6366F1]
   transition-colors duration-200
-  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring cursor-pointer" href={"/login"}
             >
-              Login
-            </button>
+              Login 
+            </Link>
 
             {/* Start Free Trial – primary CTA with scale effect */}
-            <button className="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] hover:opacity-90 hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+            <Link href={"/register"} className="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] hover:opacity-90 hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
               Start Free Trial
-            </button>
+            </Link>
 
             {/* Mobile menu button – now with onClick handler */}
             <button

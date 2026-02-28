@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export function FinalCTA() {
   return (
@@ -18,10 +19,10 @@ export function FinalCTA() {
               placeholder="Enter your work email"
               className="flex-1 rounded-md px-4 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-0 focus:outline-none focus:ring-2 focus:ring-[#6366F1] h-12"
             />
-            <button className="inline-flex items-center justify-center rounded-md px-6 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] hover:opacity-90 transition-opacity gap-2 h-12 focus:outline-none focus:ring-2 focus:ring-white">
+            <Link href="/register" className="inline-flex items-center justify-center rounded-md px-6 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] hover:opacity-90 transition-opacity gap-2 h-12 focus:outline-none focus:ring-2 focus:ring-white">
               Start Free Trial
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
           </div>
           <p className="text-sm text-gray-400">
             No credit card required • 14-day free trial • Cancel anytime

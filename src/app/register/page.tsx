@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Mail, Lock, Moon, Sun, User, Building, Phone, CreditCard } from "lucide-react";
@@ -10,8 +10,8 @@ export default function RegisterPage() {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [step, setStep] = useState(2);
-  const [selectedPlan, setSelectedPlan] = useState<"free" | "paid" | null>(null);
+  const [step, setStep] = useState(1);
+  const [selectedPlan, setSelectedPlan] = useState<"free" | "trial" | "paid" | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -30,7 +30,9 @@ export default function RegisterPage() {
     cvc: "",
   });
 
-  useState(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   if (!mounted) return null;
 
   const totalSteps = selectedPlan === "paid" ? 4 : 3;
@@ -57,12 +59,16 @@ export default function RegisterPage() {
 
   const handleNext = () => {
     if (step === 1 && !canProceedStep1()) return;
+    if (step === 1) {
+      setStep(2);
+      return;
+    }
     if (step === 2) {
       if (!selectedPlan) return;
-      if (selectedPlan === "free") {
-        setStep(4);
-      } else {
+      if (selectedPlan === "paid") {
         setStep(3);
+      } else {
+        setStep(4);
       }
       return;
     }
@@ -104,9 +110,9 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0A1929] to-[#1E293B] p-4 sm:p-6">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0A1929] to-[#1E293B] p-4 sm:p-6 animate-pop-in">
       <div className="flex w-full max-w-5xl bg-white dark:bg-gray-900 rounded-xl shadow-2xl overflow-hidden">
-        {/* Left Branding - narrower */}
+        {/* Left Branding */}
         <div className="hidden md:flex md:w-2/5 bg-gradient-to-br from-[#6366F1]/10 to-[#8B5CF6]/10 p-6 flex-col justify-between">
           <div>
             <div className="flex items-center gap-2 mb-6">
@@ -119,7 +125,7 @@ export default function RegisterPage() {
               Join PulseHQ
             </h2>
             <p className="text-base text-gray-600 dark:text-gray-300">
-              Get real insights into your organization's work.
+              Get real insights into your organization&apos;s work.
             </p>
           </div>
           <div className="space-y-3 mt-6">
@@ -138,9 +144,8 @@ export default function RegisterPage() {
           </div>
         </div>
 
-        {/* Right Form Section - wider */}
+        {/* Right Form Section */}
         <div className="w-full md:w-3/5 p-6 sm:p-6 relative">
-          {/* Theme toggle */}
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="absolute top-4 right-4 sm:top-4 sm:right-4 p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -149,7 +154,6 @@ export default function RegisterPage() {
             {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </button>
 
-          {/* Mobile logo */}
           <div className="flex items-center justify-center gap-2 mb-4 md:hidden">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center">
               <div className="w-4 h-4 bg-white rounded-full animate-pulse" />
@@ -165,7 +169,7 @@ export default function RegisterPage() {
 
             {renderStepIndicator()}
 
-            {/* Step 1: Personal Details - compact */}
+            {/* Step 1: Personal Details */}
             {step === 1 && (
               <div className="space-y-3">
                 <div className="grid grid-cols-2 gap-2">
@@ -287,7 +291,7 @@ export default function RegisterPage() {
               </div>
             )}
 
-            {/* Step 2: Plan Selection */}
+            {/* Step 2: Plan Selection - Three options */}
             {step === 2 && (
               <div className="space-y-3">
                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-1">Choose your plan</p>
@@ -300,7 +304,18 @@ export default function RegisterPage() {
                   onClick={() => setSelectedPlan("free")}
                 >
                   <h3 className="font-semibold text-gray-900 dark:text-white">Free</h3>
-                  <p className="text-xs text-gray-600 dark:text-gray-300">$0 – 5 projects, 10 members, 7-day history</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-300">$0 – 5 projects, 10 members, 7‑day history</p>
+                </div>
+                <div
+                  className={`p-3 border rounded-lg cursor-pointer transition ${
+                    selectedPlan === "trial"
+                      ? "border-[#6366F1] bg-[#6366F1]/5"
+                      : "border-gray-200 dark:border-gray-700"
+                  }`}
+                  onClick={() => setSelectedPlan("trial")}
+                >
+                  <h3 className="font-semibold text-gray-900 dark:text-white">14‑day Trial</h3>
+                  <p className="text-xs text-gray-600 dark:text-gray-300">Full access, no payment required</p>
                 </div>
                 <div
                   className={`p-3 border rounded-lg cursor-pointer transition ${
@@ -310,13 +325,13 @@ export default function RegisterPage() {
                   }`}
                   onClick={() => setSelectedPlan("paid")}
                 >
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Pro – 14-day trial</h3>
-                  <p className="text-xs text-gray-600 dark:text-gray-300">$49/month after trial – unlimited everything</p>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Pro – Paid</h3>
+                  <p className="text-xs text-gray-600 dark:text-gray-300">$49/month – unlimited everything</p>
                 </div>
               </div>
             )}
 
-            {/* Step 3: Payment Details */}
+            {/* Step 3: Payment Details (only for paid plan) */}
             {step === 3 && (
               <div className="space-y-3">
                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-1">Enter payment details</p>

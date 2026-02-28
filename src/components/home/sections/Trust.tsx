@@ -2,7 +2,7 @@ import { Shield, Star } from "lucide-react";
 
 export function Trust() {
   return (
-    <section className="py-12 px-6 border-y bg-gray-50 border-gray-200 dark:border-gray-700 dark:bg-gray-800">
+    <section id="features" className="py-12 px-6 border-y bg-gray-50 border-gray-200 dark:border-gray-700 dark:bg-gray-800">
       <div className="container mx-auto max-w-7xl">
         <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
           {/* Company Logos */}

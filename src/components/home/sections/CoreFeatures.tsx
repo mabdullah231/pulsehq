@@ -23,7 +23,7 @@ export function CoreFeatures() {
   ];
 
   return (
-    <section id="features" className="bg-gray-50 py-20 px-6 dark:bg-gray-800">
+    <section id="" className="bg-gray-50 py-20 px-6 dark:bg-gray-800">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">

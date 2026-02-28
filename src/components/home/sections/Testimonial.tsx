@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export function Testimonial() {
   return (
-    <section className="py-20 px-6 bg-white dark:bg-gray-900">
+    <section id="review" className="py-20 px-6 bg-white dark:bg-gray-900">
       <div className="container mx-auto max-w-4xl">
         <div className="bg-gradient-to-br from-[#6366F1]/10 to-[#8B5CF6]/10 border border-[#6366F1]/20 rounded-2xl p-12 relative overflow-hidden animate-zoom-in">
           {/* Background decoration */}

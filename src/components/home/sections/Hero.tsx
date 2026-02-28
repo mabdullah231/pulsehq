@@ -1,4 +1,5 @@
 import { Play } from "lucide-react";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -19,9 +20,9 @@ export function Hero() {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4">
-              <button className="inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] hover:opacity-90 hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+              <Link href={"/register"} className="inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] hover:opacity-90 hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                 Get Started Free
-              </button>
+              </Link>
               <button className="inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-medium border border-gray-200 dark:border-gray-700 bg-background hover:bg-accent hover:text-accent-foreground hover:border-gray-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring gap-2">
                 <Play className="h-5 w-5" />
                 See How It Works
