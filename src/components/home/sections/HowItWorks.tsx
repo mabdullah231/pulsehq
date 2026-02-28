@@ -20,7 +20,7 @@ export function HowItWorks() {
   ];
 
   return (
-    <section className="py-20 px-6">
+    <section className="py-20 px-6 dark:bg-gray-900">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -43,7 +43,7 @@ export function HowItWorks() {
                   {index + 1}
                 </div>
 
-                <div className="bg-card border border-gray-200 rounded-xl p-8 pt-14 text-center hover:shadow-xl transition-all hover:scale-105 animate-fade-in bg-white dark:bg-[#121212]" style={{ animationDelay: `${index * 0.15}s` }}>
+                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-8 pt-14 text-center hover:shadow-xl transition-all hover:scale-105 animate-fade-in bg-white dark:bg-[#121212]" style={{ animationDelay: `${index * 0.15}s` }}>
                   <div className="w-16 h-16 rounded-lg bg-gray-100 dark:bg-gradient-to-br from-[#6366F1] to-[#7C3AED] flex items-center justify-center mx-auto mb-6">
                     <step.icon className="w-8 h-8 text-[#6366F1] dark:text-white" />
                   </div>

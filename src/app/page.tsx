@@ -1,4 +1,4 @@
-import { Header, Hero, Trust, ProblemSolution, CoreFeatures, HowItWorks } from "@/components/sections";
+import { Header, Hero, Trust, ProblemSolution, CoreFeatures, HowItWorks, RoleValue, PulseScore, ERPFeatures, OrgShowcase, Pricing, Testimonial, FinalCTA, Footer } from "@/components/home/sections";
 
 export default function Home() {
   return (
@@ -9,6 +9,14 @@ export default function Home() {
       <ProblemSolution />
       <CoreFeatures />
       <HowItWorks />
+      <RoleValue />
+      <PulseScore />
+      <ERPFeatures />
+      <OrgShowcase />
+      <Pricing />
+      <Testimonial />
+      <FinalCTA />
+      <Footer />
     </>
   );
 }

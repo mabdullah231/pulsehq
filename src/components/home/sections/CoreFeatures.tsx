@@ -23,7 +23,7 @@ export function CoreFeatures() {
   ];
 
   return (
-    <section id="features" className="py-20 px-6 bg-muted/30">
+    <section id="features" className="bg-gray-50 py-20 px-6 dark:bg-gray-800">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -38,7 +38,7 @@ export function CoreFeatures() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group bg-card border border-gray-200 rounded-xl p-8 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer animate-zoom-in"
+              className="group bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-8 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer animate-zoom-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className={`w-16 h-16 rounded-lg bg-gradient-to-br ${feature.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>

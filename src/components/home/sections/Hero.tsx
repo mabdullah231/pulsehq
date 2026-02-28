@@ -2,7 +2,7 @@ import { Play } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-muted/30 to-background">
+    <section className="pt-32 pb-20 px-6 dark:bg-gray-900">
       <div className="container mx-auto max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Content */}
@@ -22,7 +22,7 @@ export function Hero() {
               <button className="inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] hover:opacity-90 hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                 Get Started Free
               </button>
-              <button className="inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-medium border border-gray-200 bg-background hover:bg-accent hover:text-accent-foreground hover:border-gray-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring gap-2">
+              <button className="inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-medium border border-gray-200 dark:border-gray-700 bg-background hover:bg-accent hover:text-accent-foreground hover:border-gray-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring gap-2">
                 <Play className="h-5 w-5" />
                 See How It Works
               </button>
@@ -50,9 +50,9 @@ export function Hero() {
 
           {/* Right: Dashboard Mockup */}
           <div className="relative animate-slow-float">
-            <div className="relative bg-card border border-gray-200 rounded-xl shadow-2xl overflow-hidden animate-zoom-in">
+            <div className="relative bg-card border border-gray-200 dark:border-gray-700 rounded-xl shadow-2xl overflow-hidden animate-zoom-in">
               {/* Dashboard Header */}
-              <div className="bg-gradient-to-r from-[#0A1929] to-[#1E293B] p-4 border-b border-border/20">
+              <div className="bg-gradient-to-r from-[#0A1929] to-[#1E293B] p-4 border-b border-gray-200 dark:border-gray-700">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-[#F59E0B]" />
                   <div className="w-3 h-3 rounded-full bg-[#3B82F6]" />
@@ -82,7 +82,7 @@ export function Hero() {
                 </div>
 
                 {/* Task Graph */}
-                <div className="bg-card rounded-lg p-4 border border-gray-300">
+                <div className="bg-card rounded-lg p-4 border border-gray-200 dark:border-gray-700">
                   <p className="text-sm text-muted-foreground mb-4">Team Activity (Last 7 Days)</p>
                   <div className="flex items-end gap-2 h-24">
                     {[60, 85, 70, 95, 80, 90, 100].map((height, i) => (
@@ -93,11 +93,11 @@ export function Hero() {
 
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-card rounded-lg p-4 border border-gray-300 hover:scale-105 transition-transform">
+                  <div className="bg-card rounded-lg p-4 border border-gray-200 dark:border-gray-700 hover:scale-105 transition-transform">
                     <p className="text-2xl font-bold text-[#3B82F6]">24</p>
                     <p className="text-sm text-muted-foreground">Tasks Completed</p>
                   </div>
-                  <div className="bg-card rounded-lg p-4 border border-gray-300 hover:scale-105 transition-transform">
+                  <div className="bg-card rounded-lg p-4 border border-gray-200 dark:border-gray-700 hover:scale-105 transition-transform">
                     <p className="text-2xl font-bold text-[#6366F1]">12/15</p>
                     <p className="text-sm text-muted-foreground">Active Projects</p>
                   </div>

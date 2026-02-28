@@ -2,7 +2,7 @@ import { CheckCircle2, XCircle } from "lucide-react";
 
 export function ProblemSolution() {
   return (
-    <section className="py-20 px-6">
+    <section className="py-20 px-6 dark:bg-gray-900">
       <div className="container mx-auto max-w-7xl">
         <div className="grid md:grid-cols-2 gap-12">
           {/* Problem */}
@@ -23,7 +23,7 @@ export function ProblemSolution() {
                 <XCircle className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Endless Status Meetings</h4>
-                  <p className="text-muted-foreground">Managers waste time asking "what's the status?" in meetings</p>
+                  <p className="text-muted-foreground">Managers waste time asking &apos;&apos;what&apos;s the status?&apos;&apos; in meetings</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">

@@ -31,7 +31,7 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-        ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm"
+        ? "bg-background/80 backdrop-blur-lg border-b border border-gray-200 dark:border-gray-700 shadow-sm"
         : "bg-transparent"
         }`}
     >
@@ -116,7 +116,7 @@ export function Header() {
         className={`
     absolute top-full left-0 right-0 lg:hidden
     z-[101]
-    bg-white dark:bg-[#121212] border-b-3 border-[#6366F1] shadow-md
+    bg-white dark:bg-gray-900 border-b-3 border-[#6366F1] shadow-md
     transition-all duration-300 ease-in-out
     overflow-hidden
     ${isMobileMenuOpen
