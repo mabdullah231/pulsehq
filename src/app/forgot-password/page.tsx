@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Mail, Lock, Moon, Sun, ArrowLeft, KeyRound } from "lucide-react";
+import { Mail, Lock, Moon, Sun, ArrowLeft } from "lucide-react";
 import { useTheme } from "next-themes";
 
 export default function ForgotPasswordPage() {
@@ -18,19 +18,49 @@ export default function ForgotPasswordPage() {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  // Load saved data from localStorage on mount
   useEffect(() => {
+    const saved = localStorage.getItem("forgotPasswordData");
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        setStep(parsed.step || 1);
+        setEmail(parsed.email || "");
+        setOtp(parsed.otp || ["", "", "", "", "", ""]);
+        setNewPassword(parsed.newPassword || "");
+        setConfirmPassword(parsed.confirmPassword || "");
+      } catch (e) {}
+    }
     setMounted(true);
   }, []);
+
+  // Save data to localStorage whenever relevant state changes
+  useEffect(() => {
+    if (mounted) {
+      localStorage.setItem("forgotPasswordData", JSON.stringify({
+        step,
+        email,
+        otp,
+        newPassword,
+        confirmPassword,
+      }));
+    }
+  }, [step, email, otp, newPassword, confirmPassword, mounted]);
+
+  // Clear saved data on successful reset
+  const clearSavedData = () => {
+    localStorage.removeItem("forgotPasswordData");
+  };
+
   if (!mounted) return null;
 
   const totalSteps = 3;
 
   const handleOtpChange = (index: number, value: string) => {
-    if (value.length > 1) return; // only single digit
+    if (value.length > 1) return;
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
-    // Auto-focus next input
     if (value && index < 5) {
       const nextInput = document.getElementById(`otp-${index + 1}`);
       nextInput?.focus();
@@ -52,9 +82,10 @@ export default function ForgotPasswordPage() {
     } else {
       // Final step – simulate submission
       setIsSubmitting(true);
+      clearSavedData(); // Clear saved data on success
       setTimeout(() => {
         setIsSubmitting(false);
-        router.push("/login"); // or show success message
+        router.push("/login");
       }, 1000);
     }
   };
@@ -69,12 +100,13 @@ export default function ForgotPasswordPage() {
         {Array.from({ length: totalSteps }, (_, i) => (
           <div
             key={i}
-            className={`h-2 w-2 rounded-full transition-all ${i + 1 === step
+            className={`h-2 w-2 rounded-full transition-all ${
+              i + 1 === step
                 ? "w-8 bg-gradient-to-r from-[#6366F1] to-[#8B5CF6]"
                 : i + 1 < step
-                  ? "bg-[#6366F1]"
-                  : "bg-gray-300 dark:bg-gray-700"
-              }`}
+                ? "bg-[#6366F1]"
+                : "bg-gray-300 dark:bg-gray-700"
+            }`}
           />
         ))}
       </div>
@@ -118,6 +150,15 @@ export default function ForgotPasswordPage() {
 
         {/* Right Form Section */}
         <div className="w-full md:w-3/5 p-6 sm:p-6 relative">
+          {/* Back to Home Arrow */}
+          <Link
+            href="/"
+            className="absolute top-4 left-4 sm:top-4 sm:left-4 p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            aria-label="Back to home"
+          >
+            <ArrowLeft className="h-5 w-5" />
+          </Link>
+
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="absolute top-4 right-4 sm:top-4 sm:right-4 p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
